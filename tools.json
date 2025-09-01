@@ -2,13 +2,13 @@
   {
     "name": "Password Generator",
     "url": "tools/password-generator.html",
-    "img": "images/password-generator.jpg",
+    "img": "Password Generator/Assets/Password Generator Logo.png",
     "tags": ["security", "password", "generator"]
   },
   {
     "name": "Unit Converter",
     "url": "tools/unit-converter.html",
-    "img": "images/unit-converter.jpg",
+    "img": "Unit Conversion/Assets/Unit Conversion Logo.Png",
     "tags": ["math", "conversion", "measurement"]
   },
   {
@@ -18,21 +18,15 @@
     "tags": ["design", "color", "picker"]
   },
   {
-    "name": "Markdown Editor",
-    "url": "tools/markdown-editor.html",
-    "img": "images/markdown-editor.jpg",
-    "tags": ["writing", "editor", "markdown"]
-  },
-  {
-    "name": "To-Do List",
-    "url": "tools/todo-list.html",
-    "img": "images/todo-list.jpg",
-    "tags": ["productivity", "tasks", "organizer"]
-  },
-  {
     "name": "The World's Melody",
     "url": "The World's Melody/index.html",
     "img": "images/todo-list.jpg",
     "tags": ["Nature", "tasks", "organizer"]
+  },
+   {
+    "name": "Gardening Blogs",
+    "url": "tools/unit-converter.html",
+    "img": "Gardening Blog/Assets/Gardening Blog Logo.Png",
+    "tags": ["math", "conversion", "measurement"]
   }
 ]
