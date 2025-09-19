@@ -1,38 +1,39 @@
 [
   {
     "title": "Password Generator",
-    "image": "../Password Generator/Assets/Password Generator Logo.png",
+    "image": "Password Generator/Assets/Password Generator Logo.png",
     "tags": "security password generator",
     "link": "https://example.com/prusawire",
     "slideshow": true
   },
   {
     "title": "Unit Converter",
-    "image": "../Unit Conversion/Assets/Unit Conversion Logo.Png",
+    "image": "Unit Conversion/Assets/Unit Conversion Logo.Png",
     "tags": "math conversion measurement",
     "link": "https://example.com/midi",
     "slideshow": true
   },
   {
     "title": "Color Picker",
-    "image": "../Assets/corner-bracket.jpg",
+    "image": "Assets/corner-bracket.jpg",
     "tags": "design color picker",
     "link": "https://example.com/bracket",
     "slideshow": false
   },
   {
     "title": "The World's Melody",
-    "image": "../Assets/leveling-foot.jpg",
+    "image": "Assets/leveling-foot.jpg",
     "tags": "household furniture leveling",
     "link": "https://www.youtube.com/@TheWorldsMelody",
     "slideshow": false
   },
   {
     "title": "Gardening Blogs",
-    "image": "../Gardening Blog/Assets/Gardening Blog Logo.Png",
+    "image": "Gardening Blog/Assets/Gardening Blog Logo.Png",
     "tags": "household furniture leveling",
     "link": "https://example.com/foot",
     "slideshow": true
   }
 
 ]
+
