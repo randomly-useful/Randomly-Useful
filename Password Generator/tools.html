@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool - My Website</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
+    .navbar { background-color: #1c1c1c; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+    .navbar img { height: 40px; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; padding: 8px 12px; display: inline-block; }
+    .nav-links a:hover { background-color: #333; border-radius: 5px; }
+    .hamburger { display: none; font-size: 24px; color: white; background: none; border: none; cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: #1c1c1c; padding: 10px 0; }
+      .nav-links.active { display: flex; }
+      .hamburger { display: block; }
+    }
+
+    .tool-container { max-width: 900px; margin: 100px auto 40px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h1 { font-size: 28px; margin-bottom: 20px; color: #1c1c1c; text-align: center; }
+    p { margin-bottom: 15px; font-size: 16px; }
+    input, textarea, select, button { margin-bottom: 15px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; }
+    button { background-color: #1c1c1c; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #333; }
+
+    .back-button { display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #1c1c1c; color: white; text-decoration: none; border-radius: 5px; }
+    .back-button:hover { background-color: #333; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="Assets/Randomly Useful Logo.png" alt="My Logo">
+    <button class="hamburger">☰</button>
+    <div class="nav-links">
+      <div class="dropdown"><a href="index.html">Home</a></div>
+      <div class="dropdown"><a href="about-website.html">About</a></div>
+      <div class="dropdown"><a href="tools.html">Store</a></div>
+      <div class="dropdown"><a href="disclaimer.html">Disclaimer</a></div>
+      <div class="dropdown"><a href="feedback.html">Feedback</a></div>
+    </div>
+  </div>
+
+  <!-- Tool Container -->
+  <div class="tool-container">
+    <h1>My Tool</h1>
+    <p>Description of the tool goes here.</p>
+
+    <!-- ================= PLACE YOUR TOOL CODE BELOW THIS LINE ================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      max-width: 600px; 
+      margin: auto; 
+      padding: 20px; 
+      background: #f5f5f5; 
+    }
+    h1 { text-align: center; }
+    .password-box { display: flex; align-items: center; margin-bottom: 10px; }
+    .password-display { 
+      flex: 1; 
+      font-size: 18px; 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 6px; 
+      background: #fff;
+    }
+    button { 
+      margin-left: 10px; 
+      padding: 8px 12px; 
+      cursor: pointer; 
+      border: none; 
+      border-radius: 6px; 
+      background: #4CAF50; 
+      color: white; 
+      transition: background 0.3s; 
+    }
+    button:hover { background: #45a049; }
+    .options { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px; }
+    .strength { height: 10px; border-radius: 5px; margin-top: 10px; background: #eee; }
+    .strength-bar { height: 100%; width: 0%; border-radius: 5px; }
+    label { display: block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Password Generator</h1>
+
+  <!-- Password Display -->
+  <div class="password-box">
+    <input type="text" id="password" class="password-display" readonly>
+    <button onclick="copyPassword()">📋 Copy</button>
+  </div>
+
+  <!-- Strength Meter -->
+  <div class="strength"><div id="strength-bar" class="strength-bar"></div></div>
+
+  <!-- Options -->
+  <div class="options">
+    <label>Password Length: 
+      <input type="number" id="length" value="16" min="8" max="64">
+    </label>
+    <label><input type="checkbox" id="uppercase" checked> Uppercase (A–Z)</label>
+    <label><input type="checkbox" id="lowercase" checked> Lowercase (a–z)</label>
+    <label><input type="checkbox" id="numbers" checked> Numbers (0–9)</label>
+    <label><input type="checkbox" id="symbols" checked> Symbols (!@#$%^&*)</label>
+    <label><input type="radio" name="mode" value="random" checked onclick="togglePassphraseOptions(false)"> Random Characters</label>
+    <label><input type="radio" name="mode" value="passphrase" onclick="togglePassphraseOptions(true)"> Passphrase Mode (EFF Diceware)</label>
+
+    <!-- Passphrase Options -->
+    <div id="passphrase-options" style="display: none; margin-top: 10px;">
+      <label>Number of Words:
+        <input type="number" id="numWords" value="4" min="3" max="12">
+      </label>
+    </div>
+  </div>
+
+  <!-- Generate Button -->
+  <button onclick="generatePassword()">Generate Password</button>
+
+  <!-- Strength library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
+  <script>
+    let dicewareList = [];
+
+    // Load Diceware wordlist from external JSON
+    fetch("eff-diceware.json")
+      .then(res => res.json())
+      .then(data => {
+        dicewareList = data;
+        console.log("Diceware wordlist loaded:", dicewareList.length, "words");
+      });
+
+    function togglePassphraseOptions(show) {
+      document.getElementById("passphrase-options").style.display = show ? "block" : "none";
+    }
+
+    function generatePassword() {
+      const length = parseInt(document.getElementById("length").value, 10);
+      const uppercase = document.getElementById("uppercase").checked;
+      const lowercase = document.getElementById("lowercase").checked;
+      const numbers = document.getElementById("numbers").checked;
+      const symbols = document.getElementById("symbols").checked;
+      const mode = document.querySelector("input[name='mode']:checked").value;
+
+      let password = "";
+      if (mode === "random") {
+        password = generateRandomPassword(length, uppercase, lowercase, numbers, symbols);
+      } else {
+        const numWords = parseInt(document.getElementById("numWords").value, 10) || 4;
+        password = generatePassphrase(numWords);
+      }
+
+      document.getElementById("password").value = password;
+
+      // Strength check
+      const strength = zxcvbn(password);
+      const strengthBar = document.getElementById("strength-bar");
+      strengthBar.style.width = (strength.score + 1) * 20 + "%";
+      strengthBar.style.background = ["red", "orange", "yellow", "blue", "green"][strength.score];
+    }
+
+    function copyPassword() {
+      const passwordField = document.getElementById("password");
+      passwordField.select();
+      document.execCommand("copy");
+      alert("Password copied to clipboard!");
+    }
+
+    function generateRandomPassword(length, uppercase, lowercase, numbers, symbols) {
+      let charset = "";
+      if (uppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (lowercase) charset += "abcdefghijklmnopqrstuvwxyz";
+      if (numbers) charset += "0123456789";
+      if (symbols) charset += "!@#$%^&*()-_=+[]{};:,.<>?";
+      if (!charset) return "";
+
+      let password = "";
+      const array = new Uint32Array(length);
+      window.crypto.getRandomValues(array);
+      for (let i = 0; i < length; i++) {
+        password += charset[array[i] % charset.length];
+      }
+      return password;
+    }
+
+    function generatePassphrase(numWords = 4) {
+      if (dicewareList.length === 0) return "Loading wordlist...";
+      
+      let words = [];
+      for (let i = 0; i < numWords; i++) {
+        const rand = new Uint32Array(1);
+        crypto.getRandomValues(rand);
+        const randomIndex = rand[0] % dicewareList.length;
+        words.push(dicewareList[randomIndex]);
+      }
+      return words.join("-");
+    }
+  </script>
+
+</body>
+</html>
+
+    <!-- ================= PLACE YOUR TOOL CODE ABOVE THIS LINE ================= -->
+
+  </div>
+
+  <a class="back-button" href="index.html">⬅ Back to Home</a>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+  </script>
+
+</body>
+</html>
